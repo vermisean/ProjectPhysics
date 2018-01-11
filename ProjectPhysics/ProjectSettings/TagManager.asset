@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ice
+  - FxTemporaire
+  - Checkpoint
+  - Checkpoint01
+  - Checkpoint02
+  - Checkpoint03
+  - Cannon
   layers:
   - Default
   - TransparentFX

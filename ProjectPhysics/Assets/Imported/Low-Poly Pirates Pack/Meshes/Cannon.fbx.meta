@@ -1,0 +1,277 @@
+fileFormatVersion: 2
+guid: 69d4149a345c2234f920c36c683c918b
+timeCreated: 18446744011573954816
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Balls
+    100004: Balls.001
+    100006: Balls.003
+    100008: Barrel
+    100010: Barrel.001
+    100012: Boat
+    100014: Boat.001
+    100016: Bottle
+    100018: Bottle.001
+    100020: Camera.000
+    100022: Camera.001
+    100024: Cannon
+    100026: Cannon.001
+    100028: Compass
+    100030: Flag
+    100032: Flag Textured
+    100034: Flag.001
+    100036: Hook
+    100038: Hook 2
+    100040: Lamp
+    100042: Lamp.002
+    100044: Leg
+    100046: Paddle
+    100048: Paddle.001
+    100050: Pistol
+    100052: Pistol-pip
+    100054: Pistol-pip.001
+    100056: Pistol.001
+    100058: Plane
+    100060: Plane.001
+    100062: Saber
+    100064: Saber.001
+    100066: Spyglass
+    100068: Spyglass.001
+    100070: Steering-Wheel-1
+    100072: Steering-Wheel-1.001
+    100074: Steering-Wheel-2
+    100076: Steering-Wheel-2.001
+    100078: Steering-Wheel-Empty
+    100080: Steering-Wheel-Empty.001
+    100082: Steering-Wheel-Stamp
+    100084: Steering-Wheel-Stamp.001
+    400000: //RootNode
+    400002: Balls
+    400004: Balls.001
+    400006: Balls.003
+    400008: Barrel
+    400010: Barrel.001
+    400012: Boat
+    400014: Boat.001
+    400016: Bottle
+    400018: Bottle.001
+    400020: Camera.000
+    400022: Camera.001
+    400024: Cannon
+    400026: Cannon.001
+    400028: Compass
+    400030: Flag
+    400032: Flag Textured
+    400034: Flag.001
+    400036: Hook
+    400038: Hook 2
+    400040: Lamp
+    400042: Lamp.002
+    400044: Leg
+    400046: Paddle
+    400048: Paddle.001
+    400050: Pistol
+    400052: Pistol-pip
+    400054: Pistol-pip.001
+    400056: Pistol.001
+    400058: Plane
+    400060: Plane.001
+    400062: Saber
+    400064: Saber.001
+    400066: Spyglass
+    400068: Spyglass.001
+    400070: Steering-Wheel-1
+    400072: Steering-Wheel-1.001
+    400074: Steering-Wheel-2
+    400076: Steering-Wheel-2.001
+    400078: Steering-Wheel-Empty
+    400080: Steering-Wheel-Empty.001
+    400082: Steering-Wheel-Stamp
+    400084: Steering-Wheel-Stamp.001
+    2300000: //RootNode
+    2300002: Balls
+    2300004: Balls.001
+    2300006: Balls.003
+    2300008: Barrel
+    2300010: Barrel.001
+    2300012: Boat
+    2300014: Boat.001
+    2300016: Bottle
+    2300018: Bottle.001
+    2300020: Cannon
+    2300022: Cannon.001
+    2300024: Compass
+    2300026: Flag
+    2300028: Flag Textured
+    2300030: Flag.001
+    2300032: Hook
+    2300034: Hook 2
+    2300036: Leg
+    2300038: Paddle
+    2300040: Paddle.001
+    2300042: Pistol
+    2300044: Pistol-pip
+    2300046: Pistol-pip.001
+    2300048: Pistol.001
+    2300050: Plane
+    2300052: Plane.001
+    2300054: Saber
+    2300056: Saber.001
+    2300058: Spyglass
+    2300060: Spyglass.001
+    2300062: Steering-Wheel-1
+    2300064: Steering-Wheel-1.001
+    2300066: Steering-Wheel-2
+    2300068: Steering-Wheel-2.001
+    2300070: Steering-Wheel-Stamp
+    2300072: Steering-Wheel-Stamp.001
+    3300000: //RootNode
+    3300002: Balls
+    3300004: Balls.001
+    3300006: Balls.003
+    3300008: Barrel
+    3300010: Barrel.001
+    3300012: Boat
+    3300014: Boat.001
+    3300016: Bottle
+    3300018: Bottle.001
+    3300020: Cannon
+    3300022: Cannon.001
+    3300024: Compass
+    3300026: Flag
+    3300028: Flag Textured
+    3300030: Flag.001
+    3300032: Hook
+    3300034: Hook 2
+    3300036: Leg
+    3300038: Paddle
+    3300040: Paddle.001
+    3300042: Pistol
+    3300044: Pistol-pip
+    3300046: Pistol-pip.001
+    3300048: Pistol.001
+    3300050: Plane
+    3300052: Plane.001
+    3300054: Saber
+    3300056: Saber.001
+    3300058: Spyglass
+    3300060: Spyglass.001
+    3300062: Steering-Wheel-1
+    3300064: Steering-Wheel-1.001
+    3300066: Steering-Wheel-2
+    3300068: Steering-Wheel-2.001
+    3300070: Steering-Wheel-Stamp
+    3300072: Steering-Wheel-Stamp.001
+    4300000: Cannon
+    4300002: Steering-Wheel-Stamp.001
+    4300004: Steering-Wheel-1.001
+    4300006: Steering-Wheel-2.001
+    4300008: Pistol.001
+    4300010: Pistol-pip.001
+    4300012: Spyglass.001
+    4300014: Saber.001
+    4300016: Flag.001
+    4300018: Balls.003
+    4300020: Cannon.001
+    4300022: Bottle.001
+    4300024: Barrel.001
+    4300026: Paddle.001
+    4300028: Boat.001
+    4300030: Plane.001
+    4300032: Flag Textured
+    4300034: Plane
+    4300036: Balls.001
+    4300038: Hook 2
+    4300040: Boat
+    4300042: Paddle
+    4300044: Barrel
+    4300046: Bottle
+    4300048: Balls
+    4300050: Compass
+    4300052: Flag
+    4300054: Hook
+    4300056: Saber
+    4300058: Spyglass
+    4300060: Leg
+    4300062: Pistol
+    4300064: Pistol-pip
+    4300066: Steering-Wheel-Stamp
+    4300068: Steering-Wheel-1
+    4300070: Steering-Wheel-2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -8,9 +8,7 @@ public class CameraLook : MonoBehaviour
 	public float camPosX = 0.0f;
 	public float camPosY = 5.0f;
 	public float camPosZ = -3.0f;
-	public float camRotationX;
-	public float camRotationY;
-	public float camRotationZ;
+
 	public float turnSpeed = 3.0f;
 
 	private Vector3 offset;
@@ -18,7 +16,7 @@ public class CameraLook : MonoBehaviour
 	private void Start()
 	{
 		offset = new Vector3(player.position.x + camPosX, player.position.y + camPosY, player.position.z + camPosZ);
-		transform.rotation = Quaternion.Euler(camRotationX, camRotationY, camRotationZ);
+		//transform.rotation = Quaternion.Euler(camRotationX, camRotationY, camRotationZ);
 	}
 
 

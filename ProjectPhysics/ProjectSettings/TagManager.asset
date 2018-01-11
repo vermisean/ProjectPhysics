@@ -11,6 +11,9 @@ TagManager:
   - Checkpoint02
   - Checkpoint03
   - Cannon
+  - BoxTutorial
+  - Projectile
+  - Coin
   layers:
   - Default
   - TransparentFX

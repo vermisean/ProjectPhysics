@@ -7,6 +7,7 @@ public class FallingPlatforms : MonoBehaviour
 	public float timeTilFall = 4.5f;
 	public float timeTilRespawn = 1.5f;
 	public Vector3 startPos;
+	public Quaternion startRot;
 
 	private bool isFalling = false;
 	private Rigidbody rb = null;
@@ -16,6 +17,7 @@ public class FallingPlatforms : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody> ();
 		startPos = this.transform.position;
+		startRot = this.transform.rotation;
 	}
 	
 
@@ -41,6 +43,7 @@ public class FallingPlatforms : MonoBehaviour
 		rb.isKinematic = false;
 		yield return new WaitForSeconds (timeRespawn);
 		this.transform.position = startPos;
+		this.transform.rotation = startRot;
 		rb.useGravity = false;
 		rb.isKinematic = true;
 		isFalling = false;

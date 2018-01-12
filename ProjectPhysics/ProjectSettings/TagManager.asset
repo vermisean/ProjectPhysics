@@ -14,6 +14,7 @@ TagManager:
   - BoxTutorial
   - Projectile
   - Coin
+  - Victory
   layers:
   - Default
   - TransparentFX

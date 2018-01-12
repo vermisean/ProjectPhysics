@@ -13,7 +13,7 @@ public class Cannon : MonoBehaviour
 	private bool isFiring = false;
 
 	private Rigidbody playerRB;
-	private float acceleration = Physics.gravity.y;
+	//private float acceleration = Physics.gravity.y;
 
 	void Start()
 	{

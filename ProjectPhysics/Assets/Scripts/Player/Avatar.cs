@@ -93,6 +93,16 @@ public class Avatar : MonoBehaviour
 		}
 
 		Animate ();
+
+	//	if (Input.GetKeyDown (KeyCode.E)) {
+			//m_cannonFired = true;
+			//m_cannonParticles.Play ();
+			//gameManager.StartCoroutine("WaitForCannon");
+
+		//	m_rb.AddForce (transform.forward * 200.0f, ForceMode.Acceleration);
+
+			//m_rb.AddForce (transform.up * 500.0f, ForceMode.VelocityChange);
+		//}
 	}
 
 	void Move()
@@ -258,11 +268,11 @@ public class Avatar : MonoBehaviour
 				m_cannonParticles.Play ();
 				gameManager.StartCoroutine("WaitForCannon");
 
-				m_rb.AddForce(transform.forward * 500.0f, ForceMode.Impulse);
+				//m_rb.AddForce(transform.forward * 500.0f, ForceMode.VelocityChange);
 
-				m_rb.AddForce(transform.up * 500.0f, ForceMode.Impulse);
+				//m_rb.AddForce(transform.up * 500.0f, ForceMode.VelocityChange);
 
-				//cannonScript.FireCannon ();
+				cannonScript.FireCannon ();
 				//this.gameObject.transform.position = cannonTarget.position;
 			}
 		}

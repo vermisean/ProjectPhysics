@@ -28,7 +28,7 @@ public class Cannon : MonoBehaviour
 
 	}
 
-	void FixedUpdate()
+/*	void FixedUpdate()
 	{
 		if (isFiringTime) 
 		{
@@ -41,7 +41,7 @@ public class Cannon : MonoBehaviour
 				//playerRB.velocity = Vector3.zero;
 			}
 		}
-	}
+	}*/
 
 	public void FireCannon()
 	{
@@ -49,6 +49,8 @@ public class Cannon : MonoBehaviour
 		m_player.transform.position = this.transform.position + new Vector3(-2.0f, 0.0f, 0.0f);
 		m_player.transform.rotation = this.transform.rotation;
 		playerRB.isKinematic = false;
+
+		playerRB.velocity =  (CalculateBallistics (this.transform.position, m_target.transform.position, m_targetHeight));
 
 		isFiringTime = true;
 		isFiring = true;

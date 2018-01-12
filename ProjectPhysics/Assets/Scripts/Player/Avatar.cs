@@ -5,25 +5,51 @@ using UnityEngine.UI;
 
 public class Avatar : MonoBehaviour 
 {
-	public GameManager gameManager;
-	public Cannon cannonScript;
+	[Header ("Scripts")]
+	[Space(2)]
+	public GameManager m_gameManager;
+	public Cannon m_cannonScript;
+	[Space(10)]
+
+	[Header ("UI")]
+	[Space(2)]
 	public Text m_playerMessage;
 	public Text m_playerMessageHighlight;
 	public Image m_playerMessageBox;
 	public Text m_coinText;
 	public Text m_coinTextHighlight;
+	[Space(10)]
+
+	[Header ("Cannon")]
+	[Space(2)]
 	public Transform cannonTarget = null;
-	public float m_movementForce = 175.0f;
-	public float m_sprintForce = 250.0f;
-	public float m_jumpForce = 250.0f;
+	public float m_time = 3.5f;
+
+	private bool m_inCannonZone = false;
+	[Space(10)]
+
+	[Header ("Movement")]
+	[Space(2)]
+	public float m_movementSpeed = 5.7f;
+	public float m_sprintMultiplier = 1.005f;
+	public float m_jumpSpeed = 9.0f;
 	public float m_angularSpeed = 1.57f;		// Measured in radians
+	[Space(10)]
+
+	[Header ("Checkpoints")]
+	[Space(2)]
 	public GameObject m_checkPointOneRespawn = null;
 	public GameObject m_checkPointTwoRespawn = null;
 	public GameObject m_checkPointTwoFire = null;
 	public GameObject m_checkPointThreeRespawn = null;
 	public GameObject m_checkPointThreeFire = null;
+	[Space(10)]
+
+	[Header ("Particle Systems")]
+	[Space(2)]
 	public ParticleSystem m_respawnParticles = null;
 	public ParticleSystem m_cannonParticles = null;
+	[Space(10)]
 
 	private Animator m_anim;
 	private Rigidbody m_rb = null;
@@ -43,24 +69,15 @@ public class Avatar : MonoBehaviour
 	private bool m_checkPointTwoDone = false;
 	private bool m_checkPointThree = false;
 	private bool m_checkPointThreeDone = false;
-	private float m_forwardSpeed;
-	private float m_sprintSpeed;
-	private float m_sprintMultiplier = 1.005f;
-	private float m_backwardSpeed;
-	private float m_rightAngularSpeed;
-	private float m_leftAngularSpeed;
-	private float m_totalSpeed;
-	private float m_totalAngularSpeed;
-	private float m_lastVelocity = 0.0f;
 	private int m_coinCounter;
 	private Vector3 m_horizontalVelocity;
 	private Vector3 m_angularVelocity;
 	private Vector3 m_jumpVelocity;
 
+
 	void Start () 
 	{
-		gameManager = FindObjectOfType<GameManager> ();
-		cannonScript = GameObject.Find ("Cannon").GetComponent<Cannon> ();
+		m_gameManager = FindObjectOfType<GameManager> ();
 
 		m_rb = GetComponent<Rigidbody> ();
 		m_anim = GetComponent<Animator> ();
@@ -89,44 +106,43 @@ public class Avatar : MonoBehaviour
 
 		if (m_canMove) 
 		{
-			Move ();
+			MovePhysics ();
+			Animate ();
 		}
 
-		Animate ();
 
-	//	if (Input.GetKeyDown (KeyCode.E)) {
-			//m_cannonFired = true;
-			//m_cannonParticles.Play ();
-			//gameManager.StartCoroutine("WaitForCannon");
+	if (m_inCannonZone && Input.GetKeyDown (KeyCode.E)) {
+			m_cannonFired = true;
+			m_cannonParticles.Play ();
 
-		//	m_rb.AddForce (transform.forward * 200.0f, ForceMode.Acceleration);
-
-			//m_rb.AddForce (transform.up * 500.0f, ForceMode.VelocityChange);
-		//}
+			m_canMove = false;
+			m_rb.velocity = CalculateBallistics (this.transform.position, cannonTarget.position, 3.5f);
+			//m_gameManager.WaitForCannon ();
+			m_gameManager.StartCoroutine ("WaitForCannon");
+			StartCoroutine (CannonTime ());
+		}
 	}
 
-	void Move()
+
+	void MovePhysics()
 	{
-		// Check to see if in air
-		m_isInAir = Mathf.Abs (m_rb.velocity.y) > 0.05f || Mathf.Abs (m_rb.velocity.y) < -0.05f;
+		bool isInAir = Mathf.Abs(m_rb.velocity.y) > 0.02f;
+		float jumpSpeed = Input.GetKeyDown(KeyCode.Space) && !isInAir ? m_jumpSpeed : m_rb.velocity.y;
+		Vector3 jumpVelocity = jumpSpeed * transform.up;
 
-		// Jump
-		if(Input.GetKeyDown (KeyCode.Space) && !m_isInAir)
-			m_rb.AddForce (transform.up * m_jumpForce, ForceMode.Impulse);
+		float sprintSpeed = Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift) ? m_movementSpeed * m_sprintMultiplier : 0.0f;
+		float forwardSpeed = Input.GetKey(KeyCode.W) ? m_movementSpeed : 0.0f;
+		float backwardSpeed = Input.GetKey(KeyCode.S) ? -m_movementSpeed : 0.0f;
+		float totalSpeed = forwardSpeed + sprintSpeed + backwardSpeed;
 
-		// Movement
-		if	(Input.GetKey (KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
-			m_rb.AddForce (transform.forward * m_sprintForce, ForceMode.Acceleration);
-		else if (Input.GetKey (KeyCode.W))
-			m_rb.AddForce (transform.forward * m_movementForce, ForceMode.Acceleration);
-		else if (Input.GetKey (KeyCode.S))
-			m_rb.AddForce (transform.forward * -m_movementForce, ForceMode.Acceleration);
+		Vector3 horizontalVelocity = totalSpeed * transform.forward;
+		m_rb.velocity = horizontalVelocity + jumpVelocity;
 
-		m_rightAngularSpeed = Input.GetKey (KeyCode.A) ? -m_angularSpeed : 0.0f;
-		m_leftAngularSpeed = Input.GetKey (KeyCode.D) ? m_angularSpeed : 0.0f;
-		m_totalAngularSpeed = m_rightAngularSpeed + m_leftAngularSpeed;
-		m_angularVelocity = m_totalAngularSpeed * transform.up;
-		m_rb.angularVelocity = m_angularVelocity;
+		float rightAngularSpeed = Input.GetKey(KeyCode.D) ? m_angularSpeed : 0.0f;
+		float leftAngularSpeed = Input.GetKey(KeyCode.A) ? -m_angularSpeed : 0.0f;
+		float totalAngularSpeed = rightAngularSpeed + leftAngularSpeed;
+		Vector3 angularVelocity = totalAngularSpeed * transform.up;
+		m_rb.angularVelocity = angularVelocity;
 	}
 
 
@@ -134,7 +150,7 @@ public class Avatar : MonoBehaviour
 	{
 		if (m_canMove) 
 		{
-			if (Input.GetKey (KeyCode.LeftShift)) 
+			if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.LeftShift)) 
 			{
 				m_anim.SetFloat ("Speed", 2f);
 			} 
@@ -255,6 +271,11 @@ public class Avatar : MonoBehaviour
 		{
 			m_cannonTutorialComplete = true;
 		}
+
+		if(col.gameObject.tag == "Cannon")
+		{
+			m_inCannonZone = true;
+		}
 	}
 
 
@@ -266,13 +287,13 @@ public class Avatar : MonoBehaviour
 			{
 				m_cannonFired = true;
 				m_cannonParticles.Play ();
-				gameManager.StartCoroutine("WaitForCannon");
+				m_gameManager.StartCoroutine("WaitForCannon");
 
 				//m_rb.AddForce(transform.forward * 500.0f, ForceMode.VelocityChange);
 
 				//m_rb.AddForce(transform.up * 500.0f, ForceMode.VelocityChange);
 
-				cannonScript.FireCannon ();
+				m_cannonScript.FireCannon ();
 				//this.gameObject.transform.position = cannonTarget.position;
 			}
 		}
@@ -289,6 +310,10 @@ public class Avatar : MonoBehaviour
 			Debug.Log ("Off ice!");
 		}
 
+		if(col.gameObject.tag == "Cannon")
+		{
+			m_inCannonZone = false;
+		}
 	}
 
 
@@ -359,8 +384,27 @@ public class Avatar : MonoBehaviour
 	}
 
 
-	//IEnumerator LaunchCannon()
-	//{
-		
-	//}
+	IEnumerator CannonTime()
+	{
+		yield return new WaitForSeconds (5.1f);
+		m_canMove = true;
+	}
+
+
+	Vector3 CalculateBallistics(Vector3 startPoint, Vector3 endPoint, float dispY)
+	{
+		float dispX = Vector3.Distance (startPoint, endPoint);
+
+		float initVelY = Mathf.Sqrt(-2.0f * Physics.gravity.y * dispX);
+		//Debug.Log ("init vel y: " + initVelY);
+
+		float time = (0.0f - initVelY) / Physics.gravity.y;
+		//Debug.Log ("time: " + time);
+
+		float initVelX = dispX / time;
+		//Debug.Log ("init vel x: " + initVelX);
+
+		Vector3 newVelocity = new Vector3(-initVelX, initVelY, 0.0f);
+		return newVelocity;
+	}
 }

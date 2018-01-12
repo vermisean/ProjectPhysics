@@ -31436,6 +31436,88 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 760908716}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &781505213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 781505217}
+  - component: {fileID: 781505216}
+  - component: {fileID: 781505215}
+  - component: {fileID: 781505214}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &781505214
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781505213}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &781505215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781505213}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &781505216
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781505213}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &781505217
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 781505213}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8, y: 1.04, z: 32.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &787070494
 Prefab:
   m_ObjectHideFlags: 0
@@ -31882,17 +31964,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43484e6edcc4f843ada493e42e025c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  cannonScript: {fileID: 0}
+  m_gameManager: {fileID: 0}
+  m_cannonScript: {fileID: 0}
   m_playerMessage: {fileID: 1159474611}
   m_playerMessageHighlight: {fileID: 1310758688}
   m_playerMessageBox: {fileID: 1181997718}
   m_coinText: {fileID: 1174168771}
   m_coinTextHighlight: {fileID: 1523898789}
   cannonTarget: {fileID: 1915252436}
-  m_movementForce: 175
-  m_sprintForce: 275
-  m_jumpForce: 230
+  m_time: 8
+  m_movementSpeed: 5.7
+  m_sprintMultiplier: 1.005
+  m_jumpSpeed: 9
   m_angularSpeed: 1.57
   m_checkPointOneRespawn: {fileID: 146415003}
   m_checkPointTwoRespawn: {fileID: 1651371038}
@@ -31913,9 +31996,9 @@ Rigidbody:
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!4 &836933127 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400110, guid: c683700ad5f31ad4cb9ab7a523e41f89, type: 2}
@@ -31926,7 +32009,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 836933123}
-  m_Material: {fileID: 13400000, guid: 66864d74eee662f47a3d7336df1886bf, type: 2}
+  m_Material: {fileID: 13400000, guid: 39558854572ee664abf61845121d5144, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -31945,7 +32028,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 9f1bf8e7daf8f664c9e3c923d28dca56, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -61566,12 +61649,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741d6e0e8779b0b45ad7397bea5ea9f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_target: {fileID: 1915252435}
+  m_target: {fileID: 781505213}
   m_player: {fileID: 836933123}
   m_targetHeight: 5
   time: 0
-  speed: 5
-  angle: -45
 --- !u!4 &2032680078 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4911535977480896, guid: 27175482e4b3cd74bbbde5717d30c498,

@@ -28,9 +28,10 @@ public class GameManager : MonoBehaviour
 
 	public IEnumerator WaitForCannon()
 	{
+		Debug.Log ("CANNONCAM!");
 		mainCam.enabled = false;
 		cannonCam.enabled = true;
-		yield return new WaitForSeconds (4.0f);
+		yield return new WaitForSeconds (5.0f);
 		cannonCam.enabled = false;
 		mainCam.enabled = true;
 	}

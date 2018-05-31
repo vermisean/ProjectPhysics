@@ -187,7 +187,7 @@ public class Avatar : MonoBehaviour
 		{
 			if (Input.GetKey (KeyCode.W) && Input.GetKey (KeyCode.LeftShift)) 
 			{
-				m_anim.SetFloat ("Speed", 2f);
+				m_anim.SetFloat ("Speed", 1.5f);
 			} 
 			else if (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.S)) 
 			{
@@ -266,6 +266,7 @@ public class Avatar : MonoBehaviour
 			m_isInAir = false;
 			m_anim.SetBool ("isInAir", false);
 			m_anim.SetTrigger ("Death");
+            m_rb.angularVelocity = Vector3.zero;
 			StartCoroutine (UpdateUIText ("You died!", 3.7f, false));
 		}
 	}
@@ -335,15 +336,6 @@ public class Avatar : MonoBehaviour
 
 	void OnTriggerExit(Collider col)
 	{
-		if(col.gameObject.tag == "Ice")
-		{
-			m_canMove = true;
-			m_isOnIce = false;
-			m_physicsMaterial.staticFriction = 0.6f;
-			m_physicsMaterial.dynamicFriction = 0.6f;
-			Debug.Log ("Off ice!");
-		}
-
 		if(col.gameObject.tag == "Cannon")
 		{
 			m_inCannonZone = false;
@@ -421,7 +413,7 @@ public class Avatar : MonoBehaviour
 
 	IEnumerator CannonTime()
 	{
-		yield return new WaitForSeconds (5.1f);
+		yield return new WaitForSeconds (6.1f);
 		m_canMove = true;
 	}
 
